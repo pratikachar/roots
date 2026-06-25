@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roots-Now — Harvested 30 Minutes Ago. Delivered To Your Door.</title>
+  <meta name="description" content="Hyper-local hydroponic farms in your neighborhood. Leafy greens, rare herbs, and microgreens harvested 30 minutes before they arrive at your door. Zero pesticides. Zero food miles." />
+  <meta name="theme-color" content="#0b1410" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Custom cursor follower -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand" aria-label="Roots-Now home">
+        <img src="logo-horizontal.png" alt="Roots-Now" class="brand-logo brand-logo-light" />
+        <img src="logo-horizontal-dark.png" alt="Roots-Now" class="brand-logo brand-logo-dark" />
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#hero" data-link>Home</a></li>
+          <li><a href="#about" data-link>About</a></li>
+          <li><a href="#how" data-link>How It Works</a></li>
+          <li><a href="#harvest" data-link>Harvest</a></li>
+          <li><a href="#pricing" data-link>Plans</a></li>
+          <li><a href="#blog" data-link>Blog</a></li>
+          <li><a href="#contact" data-link>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#pricing" class="btn btn-primary magnetic">Start Subscription</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#harvest">Today's Harvest</a></li>
+        <li><a href="#pricing">Plans</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#pricing" class="btn btn-primary btn-block">Start Subscription</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-2"></div>
+        <div class="mesh mesh-3"></div>
+        <div class="grid-overlay"></div>
+        <div class="particles" id="particles"></div>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-eyebrow reveal">
+          <span class="pulse-dot"></span>
+          <span>Live harvest in <strong id="liveCity">Brooklyn · NY</strong> · 4 farms online</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="line reveal"><span>Harvested</span></span>
+          <span class="line reveal"><em class="serif">30 minutes</em> <span>ago.</span></span>
+          <span class="line reveal"><span>Delivered to your</span> <span class="accent">doorstep.</span></span>
+        </h1>
+
+        <p class="hero-sub reveal">
+          A decentralized network of automated, vertical hydroponic farms tucked inside
+          your neighborhood. Leafy greens, rare herbs, and microgreens — picked
+          after you order, delivered before they wilt.
+        </p>
+
+        <div class="hero-cta reveal">
+          <a href="#pricing" class="btn btn-primary btn-lg magnetic">
+            <span>Taste the difference</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#how" class="btn btn-ghost btn-lg">
+            <span class="play-dot"></span>
+            <span>How a container farm works</span>
+          </a>
+        </div>
+
+        <div class="hero-stats reveal">
+          <div class="hstat">
+            <div class="hstat-num"><span class="count" data-to="30">0</span><small>min</small></div>
+            <div class="hstat-label">Farm → fork</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num"><span class="count" data-to="0">0</span><small>%</small></div>
+            <div class="hstat-label">Pesticides used</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num"><span class="count" data-to="95">0</span><small>%</small></div>
+            <div class="hstat-label">Less water</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num"><span class="count" data-to="42">0</span><small>+</small></div>
+            <div class="hstat-label">Varieties grown</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll down">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ABOUT / PROBLEM -->
+    <section class="section section-about" id="about">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">The supply chain we replaced</span>
+          <h2>Your "fresh" salad has been on a truck for <em class="serif">two weeks.</em></h2>
+          <p>Industrial lettuce loses up to 50% of its nutrients within 7 days of harvest. We grow it
+            two blocks from your kitchen, harvest it after you tap "order," and hand it to a courier
+            on an e-bike. No cold chain. No diesel. No compromise.</p>
+        </header>
+
+        <div class="about-grid">
+          <article class="about-card reveal tilt">
+            <div class="about-num">01</div>
+            <h3>Grocery Store Greens</h3>
+            <ul class="about-list bad">
+              <li>Harvested 7–21 days ago</li>
+              <li>1,500+ avg. food miles</li>
+              <li>Sprayed with 9–12 pesticides</li>
+              <li>Refrigerated for transit, not flavor</li>
+            </ul>
+          </article>
+
+          <article class="about-card featured reveal tilt">
+            <div class="about-num">02</div>
+            <h3>Roots-Now</h3>
+            <ul class="about-list good">
+              <li>Harvested <strong>after</strong> you order</li>
+              <li>Under 1 mile from your door</li>
+              <li>Zero pesticides. Ever.</li>
+              <li>Delivered by e-bike in 30 minutes</li>
+            </ul>
+            <div class="badge-float">Hyper-local</div>
+          </article>
+
+          <article class="about-card reveal tilt">
+            <div class="about-num">03</div>
+            <h3>The Container Farm</h3>
+            <p>A retrofitted shipping container holds 4,000 plants in vertical
+              hydroponic towers. AI tunes light, nutrients, and airflow for each crop.
+              One unit replaces three acres of farmland.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section-how" id="how">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Farm-to-App in four steps</span>
+          <h2>From <em class="serif">seed</em> to your sink.</h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Tap your harvest</h3>
+              <p>Open the app. See exactly what's ripe in the container nearest you, photographed this morning.</p>
+            </div>
+            <div class="step-art art-1"></div>
+          </li>
+          <li class="step reveal">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>We pick it. Live.</h3>
+              <p>Robotic arms harvest only your order — roots, soil, and all if you want them alive.</p>
+            </div>
+            <div class="step-art art-2"></div>
+          </li>
+          <li class="step reveal">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>E-bike couriers fly</h3>
+              <p>A neighborhood courier carries your greens in a chilled, padded crate. No trucks, no diesel.</p>
+            </div>
+            <div class="step-art art-3"></div>
+          </li>
+          <li class="step reveal">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>30 minutes. Doorstep.</h3>
+              <p>Your basil is still photosynthesizing when it touches your cutting board. That's the whole point.</p>
+            </div>
+            <div class="step-art art-4"></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- HARVEST / FEATURES -->
+    <section class="section section-harvest" id="harvest">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Today on the towers</span>
+          <h2>42 varieties. <em class="serif">All alive.</em></h2>
+          <p>From everyday romaine to single-origin Thai holy basil, every crop is dialed in by our
+            agronomy team and an on-board AI that adjusts pH, EC, and spectrum every 60 seconds.</p>
+        </header>
+
+        <div class="harvest-grid">
+          <article class="hcard reveal tilt">
+            <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1607305387299-a3d9611cd469?w=900&q=80')"></div>
+            <div class="hcard-body">
+              <span class="hcard-tag">Leafy Greens</span>
+              <h3>Butterhead, Romaine, Oakleaf</h3>
+              <p>Crisp, sweet, and snapped from the tower an hour before you eat.</p>
+              <div class="hcard-meta"><span>● Live now</span><span>14 varieties</span></div>
+            </div>
+          </article>
+
+          <article class="hcard reveal tilt">
+            <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1600326145552-327c4df2c246?w=900&q=80')"></div>
+            <div class="hcard-body">
+              <span class="hcard-tag">Rare Herbs</span>
+              <h3>Thai Basil, Shiso, Lemon Verbena</h3>
+              <p>The aromatics no supermarket will stock — fresh enough to perfume a room.</p>
+              <div class="hcard-meta"><span>● Live now</span><span>18 varieties</span></div>
+            </div>
+          </article>
+
+          <article class="hcard reveal tilt">
+            <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=900&q=80')"></div>
+            <div class="hcard-body">
+              <span class="hcard-tag">Microgreens</span>
+              <h3>Radish, Pea, Sunflower, Beet</h3>
+              <p>Snipped at peak — up to 40× the nutrients of mature greens.</p>
+              <div class="hcard-meta"><span>● Live now</span><span>10 varieties</span></div>
+            </div>
+          </article>
+
+          <article class="hcard reveal tilt">
+            <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=900&q=80')"></div>
+            <div class="hcard-body">
+              <span class="hcard-tag">Edible Flowers</span>
+              <h3>Nasturtium, Borage, Viola</h3>
+              <p>Chef-grade garnishes harvested the morning of plating.</p>
+              <div class="hcard-meta"><span>● Limited</span><span>6 varieties</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="section section-stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat reveal">
+            <div class="stat-num"><span class="count" data-to="128">0</span>k</div>
+            <div class="stat-label">Harvests delivered</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat-num"><span class="count" data-to="47">0</span></div>
+            <div class="stat-label">Neighborhood farms</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat-num"><span class="count" data-to="312">0</span>t</div>
+            <div class="stat-label">CO₂ offset / year</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat-num"><span class="count" data-to="98">0</span>%</div>
+            <div class="stat-label">Subscriber retention</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-test" id="reviews">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">From the people who plate it</span>
+          <h2>Loved by chefs. Trusted by <em class="serif">parents.</em></h2>
+        </header>
+
+        <div class="test-grid">
+          <figure class="test-card reveal">
+            <blockquote>"I stopped buying herbs the day Roots-Now opened on my block.
+              The shiso arrives with the cut-stem still weeping. That's the bar now."</blockquote>
+            <figcaption>
+              <img src="https://i.pravatar.cc/96?img=32" alt="" />
+              <div><strong>Mira Okafor</strong><span>Chef · Atelier Bloom, Brooklyn</span></div>
+            </figcaption>
+          </figure>
+
+          <figure class="test-card reveal">
+            <blockquote>"My twins eat salads now. Actual salads. The lettuce tastes
+              sweet because it hasn't been dying for two weeks on a truck."</blockquote>
+            <figcaption>
+              <img src="https://i.pravatar.cc/96?img=47" alt="" />
+              <div><strong>David Park</strong><span>Dad of two · Jersey City</span></div>
+            </figcaption>
+          </figure>
+
+          <figure class="test-card reveal">
+            <blockquote>"It's the only subscription I refuse to cancel. Watching the
+              live harvest in the app feels like owning a slice of farmland."</blockquote>
+            <figcaption>
+              <img src="https://i.pravatar.cc/96?img=12" alt="" />
+              <div><strong>Aisha Rahman</strong><span>Home cook · Williamsburg</span></div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section section-pricing" id="pricing">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Farm-to-App subscriptions</span>
+          <h2>Choose your <em class="serif">harvest rhythm.</em></h2>
+          <p>Pause, swap, or skip any week. Cancel anytime. Every box is harvested the moment your courier leaves the container.</p>
+          <div class="billing-toggle" role="tablist" aria-label="Billing">
+            <button class="active" data-bill="weekly" role="tab">Weekly</button>
+            <button data-bill="monthly" role="tab">Monthly <span class="save">save 12%</span></button>
+          </div>
+        </header>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal tilt">
+            <header>
+              <h3>Sprout</h3>
+              <p>For solo greens lovers.</p>
+            </header>
+            <div class="price"><span class="amt" data-weekly="18" data-monthly="63">$18</span><span class="per">/ week</span></div>
+            <ul>
+              <li>1 box · 4 varieties</li>
+              <li>Leafy greens + 1 herb</li>
+              <li>Live harvest cam</li>
+              <li>Skip any week</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block">Start Sprout</a>
+          </article>
+
+          <article class="price-card featured reveal tilt">
+            <div class="ribbon">Most loved</div>
+            <header>
+              <h3>Garden</h3>
+              <p>For families & home chefs.</p>
+            </header>
+            <div class="price"><span class="amt" data-weekly="34" data-monthly="119">$34</span><span class="per">/ week</span></div>
+            <ul>
+              <li>2 boxes · 8 varieties</li>
+              <li>Greens, herbs, microgreens</li>
+              <li>Priority 30-min slot</li>
+              <li>Chef's seasonal swap</li>
+              <li>Recipe pairings</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary btn-block magnetic">Start Garden</a>
+          </article>
+
+          <article class="price-card reveal tilt">
+            <header>
+              <h3>Atelier</h3>
+              <p>For restaurants & purists.</p>
+            </header>
+            <div class="price"><span class="amt" data-weekly="89" data-monthly="312">$89</span><span class="per">/ week</span></div>
+            <ul>
+              <li>Custom case · 14+ varieties</li>
+              <li>Live edible flowers</li>
+              <li>Twice-weekly delivery</li>
+              <li>Dedicated agronomist</li>
+              <li>Reserve a tower</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block">Talk to us</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section section-blog" id="blog">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Field notes</span>
+          <h2>From the <em class="serif">tower.</em></h2>
+        </header>
+        <div class="blog-grid">
+          <a href="#" class="blog-card reveal tilt">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="blog-tag">Science</span>
+              <h3>Why nutrients fall off a cliff at day 7</h3>
+              <p>The vitamin C in your romaine halves in a week. We measured it.</p>
+              <span class="blog-meta">6 min read</span>
+            </div>
+          </a>
+          <a href="#" class="blog-card reveal tilt">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="blog-tag">Inside the box</span>
+              <h3>One container, 4,000 plants, zero soil</h3>
+              <p>A tour inside the unit that's growing your dinner two blocks away.</p>
+              <span class="blog-meta">8 min read</span>
+            </div>
+          </a>
+          <a href="#" class="blog-card reveal tilt">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="blog-tag">Recipes</span>
+              <h3>Three things to do with living basil</h3>
+              <p>Because cut basil is a different ingredient entirely.</p>
+              <span class="blog-meta">4 min read</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-contact" id="contact">
+      <div class="contact-bg" aria-hidden="true"></div>
+      <div class="container contact-inner">
+        <div class="contact-copy reveal">
+          <span class="kicker">Get on the list</span>
+          <h2>Ready to taste <em class="serif">30 minutes</em> old?</h2>
+          <p>Drop your details. We'll tell you which neighborhood farm is closest and reserve your first harvest.</p>
+          <ul class="contact-points">
+            <li>● No commitment, cancel anytime</li>
+            <li>● First box ships within 5 days</li>
+            <li>● Live in NYC, Jersey City, LA, SF & Austin</li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="field">
+            <label for="cf-name">Your name</label>
+            <input id="cf-name" name="name" type="text" required placeholder="Alex Rivera" />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required placeholder="alex@example.com" />
+          </div>
+          <div class="field">
+            <label for="cf-city">City / Neighborhood</label>
+            <input id="cf-city" name="city" type="text" required placeholder="Williamsburg, Brooklyn" />
+          </div>
+          <div class="field">
+            <label for="cf-plan">Plan</label>
+            <select id="cf-plan" name="plan">
+              <option>Sprout — $18/wk</option>
+              <option selected>Garden — $34/wk</option>
+              <option>Atelier — $89/wk</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="cf-msg">Anything else?</label>
+            <textarea id="cf-msg" name="message" rows="3" placeholder="Allergies, favorite herbs, dream salads…"></textarea>
+          </div>
+          <div class="field captcha">
+            <label for="cf-captcha">Quick check: <span id="captchaQ">3 + 4 = ?</span></label>
+            <input id="cf-captcha" name="captcha" type="number" required placeholder="Answer" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block magnetic">
+            <span>Reserve my first harvest</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="logo-horizontal.png" alt="Roots-Now" class="brand-logo brand-logo-light" />
+        <img src="logo-horizontal-dark.png" alt="Roots-Now" class="brand-logo brand-logo-dark" />
+        <p>Hyper-local agri-tech. Harvested 30 minutes ago. Delivered to your door.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 4h3l-7.5 8.6L22 22h-6l-5-6.4L5 22H2l8-9.2L2 4h6l4.5 5.9L18 4z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3v3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.7V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3h3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C16.6 3.5 12 3.5 12 3.5s-4.6 0-7.9.4c-.4.1-1.4.1-2.2 1C1.2 5.6 1 7.2 1 7.2S.8 9.1.8 11v1.9c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.7.3 7.7.3s4.6 0 7.9-.4c.4-.1 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM10 15V8l6 3.5-6 3.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#harvest">Today's harvest</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Subscribe</h4>
+        <ul>
+          <li><a href="#pricing">Sprout</a></li>
+          <li><a href="#pricing">Garden</a></li>
+          <li><a href="#pricing">Atelier</a></li>
+          <li><a href="#contact">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <small>© <span id="year"></span> Roots-Now. Grown on your block.</small>
+      <small><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a></small>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <svg class="ring" viewBox="0 0 36 36"><circle cx="18" cy="18" r="16"/><circle cx="18" cy="18" r="16" id="ringFill"/></svg>
+    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="modal-icon" id="modalIcon">✓</div>
+      <h3 id="modalTitle">You're on the list</h3>
+      <p id="modalMsg">We'll be in touch within 24 hours to confirm your first harvest window.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

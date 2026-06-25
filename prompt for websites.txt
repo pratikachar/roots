@@ -1,0 +1,119 @@
+Design and build a stunning modern HTML website for Roots Now, Roots Now is a hyper-local agri-tech and automated micro-logistics platform. Act as an expert frontend engineer and do not write lazy 'Lorem Ipsum' or empty placeholders
+
+Roots Now
+**Brand details**
+Core Business
+Roots Now is a hyper-local agri-tech and automated micro-logistics platform. They operate a decentralized network of automated, vertical hydroponic farms housed inside retrofitted shipping containers placed directly within urban neighborhoods. They sell a "Farm-to-App" subscription model delivering leafy greens, rare herbs, and microgreens to a user's doorstep within 30 minutes of being harvested.
+
+Target Audience
+The definitive ideal customer is the "Culinary Purist and Conscious Parent." These are health-conscious foodies, home chefs, and affluent parents aged 28–48 living in major metropolitan food deserts or concrete jungles. They care deeply about the nutritional degradation of grocery store produce that sits in trucks for weeks, and they are willing to pay a premium for unmatched freshness, zero pesticide exposure, and a truly localized supply chain.
+
+Brand Voice and Personality
+Tone: Vibrant, transparent, and radically local.
+
+Personality: It has a crisp, energetic, and sensory-driven personality. It bridges the gap between a high-tech agricultural operation and a welcoming neighborhood farmers' market. The language is conversational, fresh, and urgent (emphasizing the "harvested 30 minutes ago" hook), making the customer feel deeply connected to the literal source of their food.
+
+
+**Research & Inspiration**
+- Research competitors in the [industry: study from given Brand Details above] space for content/structure reference
+- ALSO browse Dribbble, Awwwards, Behance for high-end contemporary UI patterns since i want brand specific high end robust modern ui with advnaced animations
+- Pull inspiration from luxury brand sites, award-winning portfolios, and modern SaaS landing pages
+- Do NOT limit creativity to competitor sites — they may have poor UX. Aim for award-worthy design.
+
+**Design Requirements**
+Color Code
+1. Green
+HEX :   #009444
+
+2. Lime Green
+HEX :   #8EC640
+
+3. Brown
+HEX :   #C49A6C
+
+Fonts
+1. Montserrat Bold
+1. Montserrat Bold Italic
+
+
+2. Montserrat Regular or similar google fonts (pair a display + body font) 
+
+- **Dark/Light mode toggle** with smooth CSS transition between themes
+- Dark modern aesthetic as default (or light if specified)
+- Smooth scroll navigation with active section highlight
+- 3D effects
+- **Micro-animations**: fade-in reveals on scroll (Intersection Observer) with staggered entry, hover scale/lift on cards/buttons, border glow effects
+- **Hero animation**: animated gradient mesh, floating particles, or morphing blob background (subtle)
+- **Interactive elements**: statistic counters that count up on scroll, parallax depth on key sections, magnetic hover on CTAs
+- Back to top button with smooth scroll + progress ring
+- Sticky transparent-to-solid header on scroll with backdrop blur
+- **Typography hierarchy**: bold display headings, clean body text, generous spacing/breathing room
+- **Color transitions**: section backgrounds shift between dark/deep/light for visual pacing
+
+**Layout Sections (customize per brand)**
+Basically research on brand and content to use sections, if needed you may add extra or new ones as suitable with relared info, still main ones be, if no content for any section then research add relevant info
+1. Hero — full-viewport with animated headline, CTA, ambient background motion
+2. About/Problem — split layout or card grid explaining the brand mission
+3. Features/Services — icon-grid or image-card masonry with hover reveals
+4. Testimonial or Stats bar — counters that animate on scroll
+5. Pricing / Tiers (if applicable) — toggle or stepped cards
+6. CTA / Contact — integrated form section with background accent
+7. Footer — multi-column with links, social, copyright
+8. also may add a menu item called "Blog" with # for now in top and footer menu since it will get linked when we will create wp theme in next phase
+9. For imagery, check if there is any visual idea or guide in content or inject high-quality web-link image paths from Unsplash or similar free platfroms that represent brand aesthetics. Ensure all navigation items link seamlessly across page sections on both desktop and mobile viewports.
+
+**Technical**
+- Pure HTML + CSS + vanilla JS (no frameworks, no jQuery) + fully responsive
+- CSS custom properties for theming (easy color swap / WP conversion later)
+- Responsive: mobile-first
+- `prefers-reduced-motion` respected — disable heavy animations for accessibility
+- Fast load: lazy-load images, minimal DOM, efficient animations using `transform`/`opacity` only
+- No inline styles in HTML (all in external style.css)
+- All images placed in root folder: [list expected image files]
+- Favicon: favicon.ico
+- contact section will have a contact form with simple random math captcha and popup modal for success/error message
+- link all top header and footer menu items with releveant sections if you need to create more pages then dont restrict your self.
+
+Also if needed, when you can't find best animation options, browse 21st.dev for a suitable [hero / pricing / testimonial / etc] components and integrate them and make the code flexible so i may later ask you to add / edit any specific component-name for section-purpose from  https://21st.dev/community/components
+
+**Deliverables**
+- index.html and if more pages needed, add proper linking
+- style.css
+- assets/js/main.js
+- Any required image assets placed links
+
+**Next Phase**
+After the HTML is approved, we will convert this into a full WordPress theme with AJAX contact form, random captcha, admin panel, and bulk email campaign system
+
+
+
+
+
+wp theme
+
+
+
+Convert the HTML into a WordPress theme with the same structure/features as the Aura Loop theme:
+
+**Features to replicate exactly:**
+1. AJAX contact form with random math captcha (hashed via wp_hash)
+2. Modal popup on success/error (no page reload)
+3. Auto-reply email to submitter: "Thanks for reaching out..."
+4. From email: contact@subdomain.colorgraphicz.in
+5. Sticky nav, scroll reveal, back to top
+6. Blog support: single.php, archive.php, comments, pagination +  add link in top and footer menu
+7. Primary nav menu + footer menu (registered)
+8. 5 widget areas (1 sidebar + 4 footer columns)
+9. Post thumbnails, custom logo support, Gutenberg blocks
+10. SEO meta tags, OG tags, preconnect for fonts
+11. Admin CPT for submissions + list table + CSV export
+12. Bulk email campaign system with hourly cron batching
+13. Multisafe — Network Enable, activate on primary site
+14. front-page.php for landing, page.php for pages
+15. theme screenshot one for theme feature/cover image
+- Admin notification to: project.colorgraphicz@gmail.com (hardcoded)
+- Use wp_mail_from / wp_mail_from_name filters for the From address 
+- From address filter: contact@subdomain.colorgraphicz.in
+- Reply-To: form submitter's email (existing)
+for social media add options to add links from admin 
+Author: colorgraphicz

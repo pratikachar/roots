@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roots Now — Harvested 30 Minutes Ago. On Your Plate Right Now.</title>
+  <meta name="description" content="Roots Now bypasses the thousands of shipping miles built into traditional grocery retail. Hyper-local hydroponic farms in your neighborhood delivering crisp produce within 30 minutes of harvest." />
+  <meta name="theme-color" content="#080e08" />
+  <meta property="og:title" content="Roots Now — Harvested 30 Minutes Ago. On Your Plate Right Now." />
+  <meta property="og:description" content="Zero-pesticide greens from automated vertical farms inside your neighborhood. 30-minute harvest-to-door delivery." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Back to top -->
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <svg class="ring" viewBox="0 0 36 36"><circle cx="18" cy="18" r="16"/><circle cx="18" cy="18" r="16" id="ringFill"/></svg>
+    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-icon-wrap" id="modalIconWrap"></div>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-body" id="modalBody"></p>
+      <button class="btn btn-primary" id="modalBtn">Got It</button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div class="mobile-backdrop" id="mobileBackdrop"></div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <div class="mobile-nav-top">
+      <img src="../logo-horizontal.png" alt="Roots Now" class="mobile-logo" width="130" height="40">
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#how" class="mobile-nav-link">How It Works</a></li>
+      <li><a href="#features" class="mobile-nav-link">Features</a></li>
+      <li><a href="#technology" class="mobile-nav-link">Technology</a></li>
+      <li><a href="#pricing" class="mobile-nav-link">Plans</a></li>
+      <li><a href="#blog" class="mobile-nav-link">Blog</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <a href="#pricing" class="btn btn-primary btn-block">Start Harvesting</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand" aria-label="Roots Now home">
+        <img src="../logo-horizontal.png" alt="Roots Now" class="brand-logo brand-logo-light" />
+        <img src="../logo-horizontal-dark.png" alt="Roots Now" class="brand-logo brand-logo-dark" />
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#about" data-link>About</a></li>
+          <li><a href="#how" data-link>How It Works</a></li>
+          <li><a href="#features" data-link>Features</a></li>
+          <li><a href="#technology" data-link>Technology</a></li>
+          <li><a href="#pricing" data-link>Plans</a></li>
+          <li><a href="#blog" data-link>Blog</a></li>
+          <li><a href="#contact" data-link>Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon theme-icon--moon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-icon theme-icon--sun">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        <a href="#pricing" class="btn btn-primary magnetic">Start Subscription</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-2"></div>
+        <div class="mesh mesh-3"></div>
+        <div class="grid-overlay"></div>
+      </div>
+      <div class="container hero-inner">
+        <div class="hero-eyebrow reveal">
+          <span class="pulse-dot"></span>
+          <span>Now Harvesting in <strong>47 Neighborhoods</strong></span>
+        </div>
+        <h1 class="hero-title">
+          <span class="line reveal"><span>Harvested</span></span>
+          <span class="line reveal"><em>30 minutes</em> <span>ago.</span></span>
+          <span class="line reveal"><span>On your</span> <span class="accent">plate right now.</span></span>
+        </h1>
+        <p class="hero-sub reveal">
+          Roots Now bypasses the thousands of shipping miles built into traditional grocery retail. We grow your greens in automated vertical farms directly inside your neighborhood, delivering crisp produce to your kitchen within <strong>30 minutes</strong> of harvest.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#pricing" class="btn btn-primary btn-lg magnetic">
+            <span>Choose Your Neighborhood Farm</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#how" class="btn btn-ghost btn-lg">
+            <span class="play-dot"></span>
+            <span>View the Living Catalog</span>
+          </a>
+        </div>
+        <div class="hero-counters reveal">
+          <div class="hc-item">
+            <span class="hc-num" id="liveHarvestMin">4</span>
+            <span class="hc-label">min since last harvest</span>
+          </div>
+          <span class="hc-sep"></span>
+          <div class="hc-item">
+            <span class="hc-num">30</span>
+            <span class="hc-label">min guaranteed delivery</span>
+          </div>
+          <span class="hc-sep"></span>
+          <div class="hc-item">
+            <span class="hc-num">0</span>
+            <span class="hc-label">pesticides, ever</span>
+          </div>
+          <span class="hc-sep"></span>
+          <div class="hc-item">
+            <span class="hc-num">95<small>%</small></span>
+            <span class="hc-label">less water used</span>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-hint-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-bar" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item"><span class="marquee-dot"></span>Zero Pesticides, Forever</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>30-Min Harvest-to-Door</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Neighborhood Container Farms</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>95% Less Water Than Soil</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Automated Vertical Hydroponics</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>No Cold Chain Degradation</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Farm-to-App Subscription</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Carbon-Negative Operations</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Zero Pesticides, Forever</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>30-Min Harvest-to-Door</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Neighborhood Container Farms</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>95% Less Water Than Soil</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Automated Vertical Hydroponics</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>No Cold Chain Degradation</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Farm-to-App Subscription</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Carbon-Negative Operations</span>
+      </div>
+    </div>
+
+    <!-- ABOUT / PROBLEM vs SOLUTION -->
+    <section class="section section-about" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-left">
+            <span class="kicker">The Problem</span>
+            <h2>The nutritional decline of <em>long-haul logistics.</em></h2>
+            <p class="section-body">The produce on standard grocery shelves is rarely fresh. Most commercial greens are harvested weeks early, treated with preservation gases, and shipped across continents in refrigerated trucks. By the time this food reaches your kitchen, up to fifty percent of its original vitamin density has dissolved, resulting in muted flavors, soft textures, and unknown chemical exposures.</p>
+            <div class="problem-stats">
+              <div class="prob-stat">
+                <span class="prob-num">1,500<span class="prob-unit">+mi</span></span>
+                <span class="prob-label">Average distance US produce travels before purchase</span>
+              </div>
+              <div class="prob-stat">
+                <span class="prob-num">14<span class="prob-unit">days</span></span>
+                <span class="prob-label">Average cold storage time before your grocery run</span>
+              </div>
+              <div class="prob-stat">
+                <span class="prob-num">50<span class="prob-unit">%</span></span>
+                <span class="prob-label">Nutrient loss during transit and storage</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-right">
+            <span class="kicker green">The Solution</span>
+            <h2>Radical proximity changes <em>everything.</em></h2>
+            <p class="section-body">Roots Now eliminates the supply chain completely. We retrofit shipping containers into pristine, hyper-local hydroponic ecosystems placed right in your urban neighborhood. Because our indoor growing environments are completely sealed from external contaminants, we never use chemical pesticides or herbicides. You receive pure, peak-nutrient produce that is still living when it leaves the farm.</p>
+            <div class="about-cta">
+              <a href="#how" class="btn btn-primary magnetic">See How It Works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section-how" id="how">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Farm to Front Door</span>
+          <h2>From <em>30 minutes ago</em> to your kitchen.</h2>
+          <p>Roots Now operates a decentralized network of micro-fulfillment pathways. By growing food inside the exact zip codes where it is consumed, we eliminate long-haul trucks, carbon-heavy distributions, and warehouse storage variables.</p>
+        </div>
+        <div class="process-track">
+          <div class="process-step reveal">
+            <div class="step-orb">
+              <svg viewBox="0 0 56 56" fill="none" class="step-svg"><rect x="10" y="18" width="36" height="24" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M4 18h48M18 10h20M14 42v5M42 42v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="28" cy="30" r="6" stroke="currentColor" stroke-width="1.8"/><path d="M28 24v-3M28 36v3M22 30h-3M37 30h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="step-num" aria-hidden="true">01</span>
+            </div>
+            <h3 class="step-title">Subscribe and Select</h3>
+            <p class="step-body">Use our digital marketplace to customize your weekly harvest basket, choosing from a curated list of crispy lettuces, fiery mustard greens, and rare culinary herbs.</p>
+          </div>
+          <div class="process-arrow">
+            <svg viewBox="0 0 50 14" fill="none"><path d="M0 7h46M40 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-orb">
+              <svg viewBox="0 0 56 56" fill="none" class="step-svg"><circle cx="28" cy="28" r="20" stroke="currentColor" stroke-width="1.8"/><path d="M28 14v14l9 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="28" r="3" fill="currentColor"/></svg>
+              <span class="step-num" aria-hidden="true">02</span>
+            </div>
+            <h3 class="step-title">Cut to Order</h3>
+            <p class="step-body">The moment your scheduled delivery window approaches, our automated neighborhood farm system activates. Your greens are carefully cut and packed while their nutrient density is at its absolute maximum.</p>
+          </div>
+          <div class="process-arrow">
+            <svg viewBox="0 0 50 14" fill="none"><path d="M0 7h46M40 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="process-step reveal">
+            <div class="step-orb">
+              <svg viewBox="0 0 56 56" fill="none" class="step-svg"><path d="M6 36h7M43 36h7M14 32V20a4 4 0 014-4h10l7 9h7a4 4 0 014 4v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="39" r="5" stroke="currentColor" stroke-width="1.8"/><circle cx="40" cy="39" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M22 39h14" stroke="currentColor" stroke-width="1.8"/></svg>
+              <span class="step-num" aria-hidden="true">03</span>
+            </div>
+            <h3 class="step-title">Direct Transit</h3>
+            <p class="step-body">Our neighborhood courier network receives your basket directly from the farm container, navigating city blocks to arrive at your door inside thirty minutes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section section-features" id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Why Roots Now</span>
+          <h2>Every detail engineered for <em>unmatched freshness.</em></h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal tilt">
+            <div class="fc-icon-wrap">
+              <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="15" stroke="currentColor" stroke-width="1.6"/><path d="M11 18l5 5 9-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h4>Zero Pesticides. Forever.</h4>
+            <p>Our sealed hydroponic environment eliminates the need for any chemical intervention. Our containers are a fully controlled, closed ecosystem where pests simply cannot enter.</p>
+            <span class="fc-tag">Sealed Environment</span>
+          </div>
+          <div class="feature-card reveal tilt">
+            <div class="fc-icon-wrap">
+              <svg viewBox="0 0 36 36" fill="none"><path d="M18 4l4 8 9 1-6.5 6.5 1.5 9L18 25l-8 3.5 1.5-9L5 13l9-1 4-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <h4>Harvested to Your Order</h4>
+            <p>We don't pre-pick and store. The moment you place your order, your greens are harvested. No sitting in a warehouse cooling. No slow nutrient death in a refrigerator.</p>
+            <span class="fc-tag">Order-Triggered</span>
+          </div>
+          <div class="feature-card reveal tilt">
+            <div class="fc-icon-wrap">
+              <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="currentColor" stroke-width="1.6"/><path d="M18 10v8l5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="18" r="2" fill="currentColor"/></svg>
+            </div>
+            <h4>AI-Optimized Growth</h4>
+            <p>Precision sensors monitor pH, EC, temperature, humidity, and CO&#8322; levels every 30 seconds. Our AI adjusts the growing environment in real-time for maximum nutrient density.</p>
+            <span class="fc-tag">Machine Learning</span>
+          </div>
+          <div class="feature-card reveal tilt">
+            <div class="fc-icon-wrap">
+              <svg viewBox="0 0 36 36" fill="none"><path d="M18 5c-5 3-9 8-9 14a9 9 0 0018 0c0-6-4-11-9-14z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18 14v8M15 17l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h4>95% Less Water Used</h4>
+            <p>Our closed-loop hydroponic NFT system continuously recycles water. We use 95% less water than conventional soil farming to grow the same — actually superior — yield.</p>
+            <span class="fc-tag">Sustainable</span>
+          </div>
+          <div class="feature-card reveal tilt">
+            <div class="fc-icon-wrap">
+              <svg viewBox="0 0 36 36" fill="none"><path d="M5 10h26M5 18h18M5 26h22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="27" cy="26" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M25 26l1.5 1.5 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h4>30-Minute Delivery Window</h4>
+            <p>Our purpose-built urban micro-logistics network is engineered for speed from container to doorstep. Average delivery time is 23 minutes from harvest completion.</p>
+            <span class="fc-tag">Hyper-Local</span>
+          </div>
+          <div class="feature-card reveal tilt">
+            <div class="fc-icon-wrap">
+              <svg viewBox="0 0 36 36" fill="none"><path d="M18 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9l3-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <h4>Complete Supply Chain Transparency</h4>
+            <p>Track your greens from seed to your table in real-time through our app. Know exactly which container farm harvested your order and the precise time it was cut.</p>
+            <span class="fc-tag">Total Traceability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section class="section section-tech" id="technology">
+      <div class="container">
+        <div class="tech-grid">
+          <div class="tech-left">
+            <span class="kicker">The Technology</span>
+            <h2>Controlled environment agriculture for <em>urban spaces.</em></h2>
+            <p class="section-body">We do not rely on unpredictable weather patterns or chemical soil additions. Our indoor modular farms utilize advanced hydroponic systems that feed water and organic mineral solutions directly to plant root structures. This automated precision allows our crops to grow at peak efficiency, utilizing ninety-five percent less water than traditional open-field agricultural models while occupying a fraction of the physical land footprint.</p>
+            <p class="section-body muted">By constantly monitoring ambient humidity, temperature, and light spectrum frequencies, our growing systems create ideal seasonal conditions for every crop all year long. This absolute environmental control means our rare herbs and tender greens develop intense, natural flavor profiles and unparalleled structural crispness, completely free from outdoor industrial pollution or soil-borne diseases.</p>
+            <ul class="tech-specs">
+              <li class="ts-item">
+                <span class="ts-icon">01</span>
+                <div class="ts-content">
+                  <strong>40-ft Retrofitted Containers</strong>
+                  <span>Climate-sealed, solar-powered micro-farms placed within urban neighborhoods</span>
+                </div>
+              </li>
+              <li class="ts-item">
+                <span class="ts-icon">02</span>
+                <div class="ts-content">
+                  <strong>Spectrum-Tuned LED Lighting</strong>
+                  <span>Full-cycle arrays with wavelengths optimized for each plant variety's ideal photosynthesis profile</span>
+                </div>
+              </li>
+              <li class="ts-item">
+                <span class="ts-icon">03</span>
+                <div class="ts-content">
+                  <strong>Automated Harvest Arms</strong>
+                  <span>Robotic systems cut, sort, and package your order with zero human contact</span>
+                </div>
+              </li>
+              <li class="ts-item">
+                <span class="ts-icon">04</span>
+                <div class="ts-content">
+                  <strong>Real-Time Sensor Network</strong>
+                  <span>pH, EC, temperature, humidity, CO&#8322; — monitored and AI-adjusted every 30 seconds</span>
+                </div>
+              </li>
+              <li class="ts-item">
+                <span class="ts-icon">05</span>
+                <div class="ts-content">
+                  <strong>Solar + Battery Powered</strong>
+                  <span>Each container runs on rooftop solar with 48-hour battery backup for full off-grid resilience</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="tech-right reveal">
+            <div class="tech-visual-wrap">
+              <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=780&q=85" alt="Vertical hydroponic growing towers with lush green plants" loading="lazy" class="tech-img">
+              <div class="tech-badge-grid">
+                <div class="tech-badge tb-green">
+                  <span class="tb-num">5,000</span>
+                  <span class="tb-label">Plants per container</span>
+                </div>
+                <div class="tech-badge tb-lime">
+                  <span class="tb-num">2 acres</span>
+                  <span class="tb-label">Equivalent farmland</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section section-stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item reveal">
+            <span class="stat-num" data-target="30" data-suffix="min">0</span>
+            <span class="stat-label">Harvest-to-Door Guarantee</span>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-num" data-target="0" data-suffix="">0</span>
+            <span class="stat-label">Pesticides Used. Ever.</span>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-num" data-target="47" data-suffix="+">0</span>
+            <span class="stat-label">Neighborhoods Served</span>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-num" data-target="95" data-suffix="%">0</span>
+            <span class="stat-label">Less Water Than Soil Farming</span>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-num" data-target="5000" data-suffix="">0</span>
+            <span class="stat-label">Plants Per Container</span>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-num" data-target="98" data-suffix="%">0</span>
+            <span class="stat-label">Customer Retention Rate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">What Subscribers Say</span>
+          <h2>Loved by chefs. Trusted by <em>parents.</em></h2>
+        </div>
+        <div class="testimonials-outer">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <div class="testimonial-card">
+              <div class="tc-stars">★★★★★</div>
+              <blockquote>"I'm a private chef and the quality difference is staggering. The micro basil from Roots Now tastes like it came straight from a garden in Tuscany. My clients ask me what my secret ingredient is — I tell them it's proximity to the source."</blockquote>
+              <div class="tc-author">
+                <div class="tc-avatar">MT</div>
+                <div class="tc-info">
+                  <strong>Marco T.</strong>
+                  <span>Private Chef, Manhattan</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="tc-stars">★★★★★</div>
+              <blockquote>"As a mother of three, I was done worrying about pesticide residue on my kids' food. Now I know exactly where every single leaf comes from. My children have actually started requesting their greens — something I never thought was possible."</blockquote>
+              <div class="tc-author">
+                <div class="tc-avatar">SK</div>
+                <div class="tc-info">
+                  <strong>Sarah K.</strong>
+                  <span>Mother & Home Chef, Brooklyn</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="tc-stars">★★★★★</div>
+              <blockquote>"The watercress and microgreens have elevated every dish at my restaurant. The speed from farm to plate is unlike anything in the traditional supply chain. We've switched every green on our menu to Roots Now — and our reviews reflect it."</blockquote>
+              <div class="tc-author">
+                <div class="tc-avatar">AO</div>
+                <div class="tc-info">
+                  <strong>Chef Amara O.</strong>
+                  <span>Executive Chef & Restaurant Owner</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="tc-stars">★★★★★</div>
+              <blockquote>"The moment I opened my first delivery and smelled that freshness — it was immediately clear I could never go back to the grocery store. This is what food should taste like. This is what nutrition should feel like in your body."</blockquote>
+              <div class="tc-author">
+                <div class="tc-avatar">RE</div>
+                <div class="tc-info">
+                  <strong>Dr. Rachel E.</strong>
+                  <span>Nutritionist & Wellness Coach</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="tc-stars">★★★★★</div>
+              <blockquote>"Running a high-end juice bar, ingredient freshness is everything. Roots Now delivers our greens with a consistency and quality that has genuinely changed our product. Our customers taste the difference."</blockquote>
+              <div class="tc-author">
+                <div class="tc-avatar">JM</div>
+                <div class="tc-info">
+                  <strong>James M.</strong>
+                  <span>Founder, Pressed & Pure Juice Bar</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonials-nav">
+            <button class="t-nav-btn" id="tPrev" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="t-dots" id="tDots" aria-label="Testimonial navigation" role="tablist"></div>
+            <button class="t-nav-btn" id="tNext" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="section section-mission" id="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-card mission-core">
+            <span class="kicker white">Our Core Mission</span>
+            <h2>Ending urban food <em>deserts.</em></h2>
+            <p>To reintegrate clean, nutrient-dense food production directly into modern metropolitan centers. We aim to eliminate urban food deserts by establishing automated agricultural infrastructure within walking distance of every major neighborhood, restoring immediate access to living food.</p>
+          </div>
+          <div class="mission-card mission-vision">
+            <span class="kicker">Our Long-Term Vision</span>
+            <h2>Resilient urban food <em>networks.</em></h2>
+            <p>To construct completely resilient urban food networks that protect metropolitan areas from climate-driven supply chain disruptions. By transforming underutilized city spaces into highly productive agricultural centers, we want to help modern cities become self-sustaining ecosystems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section section-pricing" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Choose Your Harvest</span>
+          <h2>Fresh greens on <em>your schedule.</em></h2>
+          <p>Pause, skip, or cancel anytime. No contracts, no lock-ins — just the freshest produce you've ever tasted, delivered on your terms.</p>
+          <div class="pricing-toggle-wrap">
+            <span class="ptoggle-label" id="pToggleLabelW">Weekly</span>
+            <button class="ptoggle-btn" id="pricingToggle" role="switch" aria-checked="false" aria-label="Toggle between weekly and monthly pricing">
+              <span class="ptoggle-thumb"></span>
+            </button>
+            <span class="ptoggle-label" id="pToggleLabelM">Monthly <span class="save-chip">Save 12%</span></span>
+          </div>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card reveal tilt">
+            <div class="pc-tier">Starter</div>
+            <h3 class="pc-name">The Nest Basket</h3>
+            <div class="pc-price-wrap">
+              <span class="pc-currency">$</span>
+              <span class="pc-price" data-weekly="35" data-monthly="123">35</span>
+              <span class="pc-period">/ week</span>
+            </div>
+            <p class="pc-tagline">Curated selection of three seasonal salad greens and one choice culinary herb. Ideal for individuals or couples focused on clean daily nutrition.</p>
+            <ul class="pc-features">
+              <li>3 seasonal salad greens + 1 herb</li>
+              <li>Guaranteed 30-min delivery window</li>
+              <li>Roots Now App access</li>
+              <li>Skip any week</li>
+              <li class="unavail">Rare microgreen varieties</li>
+              <li class="unavail">Priority marketplace access</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block">Activate Weekly Nest Subscription</a>
+          </article>
+          <article class="price-card featured reveal tilt">
+            <div class="pc-badge">Most Popular</div>
+            <div class="pc-tier">Family</div>
+            <h3 class="pc-name">The Gastronomy Box</h3>
+            <div class="pc-price-wrap">
+              <span class="pc-currency">$</span>
+              <span class="pc-price" data-weekly="60" data-monthly="211">60</span>
+              <span class="pc-period">/ week</span>
+            </div>
+            <p class="pc-tagline">Extended selection of five premium salad varieties, two rare microgreen flats, and two specialty kitchen herbs. Optimal for family wellness or dedicated home chefs.</p>
+            <ul class="pc-features">
+              <li>5 salad varieties + 2 microgreens + 2 herbs</li>
+              <li>Priority 30-min delivery slot</li>
+              <li>Full app marketplace access</li>
+              <li>Custom recipe harvest requests</li>
+              <li>Early seasonal variety access</li>
+              <li class="unavail">Dedicated micro-courier</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary btn-block magnetic">Activate Weekly Gastronomy Subscription</a>
+          </article>
+          <article class="price-card reveal tilt">
+            <div class="pc-tier">Professional</div>
+            <h3 class="pc-name">The Atelier Palette</h3>
+            <div class="pc-price-wrap">
+              <span class="pc-currency">$</span>
+              <span class="pc-price" data-weekly="110" data-monthly="387">110</span>
+              <span class="pc-period">/ week</span>
+            </div>
+            <p class="pc-tagline">Unlimited access to our rarest microgreen varieties, edible flower selections, and delicate hydroponic herbs. Engineered explicitly for culinary artists and serious food purists.</p>
+            <ul class="pc-features">
+              <li>Unlimited rare microgreens & edible flowers</li>
+              <li>Custom scheduled delivery times</li>
+              <li>Dedicated neighborhood micro-courier</li>
+              <li>Custom grow requests (7-day advance)</li>
+              <li>Bi-monthly container farm visit</li>
+              <li>Reserve a tower</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block">Request Atelier Access</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section section-blog" id="blog">
+      <div class="container">
+        <div class="blog-header">
+          <div>
+            <span class="kicker">Field Notes</span>
+            <h2>From the <em>farm.</em></h2>
+          </div>
+          <a href="#" class="btn btn-outline">View All Articles</a>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card reveal tilt">
+            <a href="#" class="blog-img-link" tabindex="-1">
+              <div class="blog-img-wrap">
+                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=620&q=80" alt="Fresh leafy greens close up" loading="lazy" class="blog-img">
+              </div>
+            </a>
+            <div class="blog-content">
+              <span class="blog-cat">Nutrition Science</span>
+              <h3><a href="#">Why nutrients fall off a cliff at day 7</a></h3>
+              <p>The vitamin C in your romaine halves in a week. We measured it. Here's what the industrial food chain doesn't want you to know about the nutrient timeline of your produce.</p>
+              <a href="#" class="blog-link">Read Article</a>
+            </div>
+          </article>
+          <article class="blog-card reveal tilt">
+            <a href="#" class="blog-img-link" tabindex="-1">
+              <div class="blog-img-wrap">
+                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=620&q=80" alt="Hydroponic farm interior" loading="lazy" class="blog-img">
+              </div>
+            </a>
+            <div class="blog-content">
+              <span class="blog-cat">Behind the Farm</span>
+              <h3><a href="#">One container, 5,000 plants, zero soil</a></h3>
+              <p>A tour inside the unit that's growing your dinner two blocks away. What happens inside a 40-foot shipping container transformed into a vertical hydroponic farm.</p>
+              <a href="#" class="blog-link">Read Article</a>
+            </div>
+          </article>
+          <article class="blog-card reveal tilt">
+            <a href="#" class="blog-img-link" tabindex="-1">
+              <div class="blog-img-wrap">
+                <img src="https://images.unsplash.com/photo-1609780447631-05b93e5a3202?w=620&q=80" alt="Fresh microgreens arranged on dark surface" loading="lazy" class="blog-img">
+              </div>
+            </a>
+            <div class="blog-content">
+              <span class="blog-cat">Technology</span>
+              <h3><a href="#">The 30-minute promise: building the fastest farm-to-table</a></h3>
+              <p>Engineering a 30-minute harvest-to-doorstep guarantee isn't just a logistics challenge — it's a complete rethinking of what urban food infrastructure could look like.</p>
+              <a href="#" class="blog-link">Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+      <div class="cta-band-bg">
+        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1600&q=80" alt="" aria-hidden="true" loading="lazy" class="cta-band-img">
+        <div class="cta-band-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="cta-band-inner reveal">
+          <p class="cta-eyebrow">Ready to taste the actual difference?</p>
+          <h2 class="cta-band-h2">Your neighborhood farm<br>is ready to harvest.</h2>
+          <p class="cta-band-sub">Join thousands of subscribers who've made the switch to truly fresh produce. Your first delivery arrives within days of signup.</p>
+          <a href="#pricing" class="btn btn-primary btn-xl magnetic">Start Your Subscription Today</a>
+          <p class="cta-band-note">100% freshness guarantee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; No lock-in contracts</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-contact" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-left">
+            <span class="kicker">Get In Touch</span>
+            <h2>Ready to taste <em>30 minutes</em> old?</h2>
+            <p class="section-body">Drop your details. We'll tell you which neighborhood farm is closest and reserve your first harvest. Whether you're starting a subscription, exploring a restaurant partnership, or curious about our container farms — we'd love to hear from you.</p>
+            <ul class="contact-info">
+              <li class="ci-item">
+                <span class="ci-icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <a href="mailto:hello@rootsnow.com">hello@rootsnow.com</a>
+              </li>
+              <li class="ci-item">
+                <span class="ci-icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12.07 19.79 19.79 0 01.07 3.5 2 2 0 012.03 1.29h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <a href="tel:+18005550123">+1 (800) 555-0123</a>
+              </li>
+              <li class="ci-item">
+                <span class="ci-icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+                </span>
+                <span>Operating in 47 Metro Neighborhoods Across the US</span>
+              </li>
+            </ul>
+          </div>
+          <div class="contact-right">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">Your Name <span class="req">*</span></label>
+                  <input type="text" id="fname" name="fname" autocomplete="given-name" placeholder="Alex Rivera" required>
+                  <span class="field-error" id="err-fname" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name <span class="req">*</span></label>
+                  <input type="text" id="lname" name="lname" autocomplete="family-name" placeholder="Smith" required>
+                  <span class="field-error" id="err-lname" role="alert"></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="alex@example.com" required>
+                <span class="field-error" id="err-email" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="interest">I'm interested in <span class="req">*</span></label>
+                <select id="interest" name="interest" required>
+                  <option value="">Select an option...</option>
+                  <option value="subscription">Starting a Subscription</option>
+                  <option value="chefs-reserve">Chef's Reserve Plan</option>
+                  <option value="restaurant">Restaurant / Business Partnership</option>
+                  <option value="farm-tour">Container Farm Tour</option>
+                  <option value="press">Press & Media</option>
+                  <option value="other">General Enquiry</option>
+                </select>
+                <span class="field-error" id="err-interest" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea id="message" name="message" rows="4" placeholder="Tell us about yourself and what you're looking for..." required></textarea>
+                <span class="field-error" id="err-message" role="alert"></span>
+              </div>
+              <div class="form-captcha">
+                <label for="captchaInput" class="captcha-q">Quick check: <strong id="captchaQuestion"></strong> = ?</label>
+                <input type="number" id="captchaInput" name="captcha" placeholder="Your answer" required>
+                <span class="field-error" id="err-captcha" role="alert"></span>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg magnetic" id="submitBtn">
+                <span>Reserve My First Harvest</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../logo-horizontal.png" alt="Roots Now" class="footer-logo" width="136" height="42">
+          <p class="footer-tagline">Hyper-local agri-tech and automated micro-logistics. Harvested in your neighborhood. Delivered in 30 minutes.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M11 17v-4a3 3 0 016 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#how">How It Works</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#technology">Technology</a></li>
+              <li><a href="#pricing">Plans</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Plans</h4>
+            <ul>
+              <li><a href="#pricing">Nest Basket</a></li>
+              <li><a href="#pricing">Gastronomy Box</a></li>
+              <li><a href="#pricing">Atelier Palette</a></li>
+              <li><a href="#contact">Business</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press Kit</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Roots Now Inc. All rights reserved. Grown on your block.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
