@@ -81,3 +81,8 @@ roots/
 
 ## Next Steps
 - (none — all sections complete)
+
+## WordPress Theme Created
+- Roots Now WordPress theme at roots-now-theme/
+- Full conversion from v6 HTML with all sections
+- AJAX contact, CPTs, campaigns, admin panel, blog support, legal pages, social customizer
