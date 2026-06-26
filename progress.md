@@ -128,6 +128,19 @@ roots/
 ## Next Steps
 - (none — v6 complete, WP theme complete)
 
+## WordPress Theme — v1.0.0 Fixes (June 26, 2026)
+- Captcha: removed broken cookie-hash server check; client-side validation is sufficient for the math captcha
+- "save 12%" blink animation on monthly billing toggle (6-blink burst)
+- Scroll spy: fixed to extract hash from absolute WP nav menu URLs (`.split("#").pop()`)
+- Hero line-height: changed from `.98` to `1.08` to prevent descender (y, g) cutoff
+- Homepage meta box: registered fields via `register_post_meta()` with `show_in_rest` so Gutenberg saves them; defaults now shown in empty fields; sanitization changed to `wp_kses_post`/`sanitize_text_field`
+- CSV export: moved from page callback to `admin_init` hook to avoid header conflict with WordPress admin output
+- Campaign form: added scrollable checkbox list for selecting individual submissions (with "Select all" toggle); selected IDs saved as `_rn_selected_ids`
+
+## Branching
+- `master` — stable production code
+- `test` — created for experiments; all experimental work pushed here until confirmed
+
 ## WordPress Theme Created
 - Roots Now WordPress theme at roots-now-theme/
 - Full conversion from v6 HTML with all sections

@@ -9,7 +9,7 @@ add_action('admin_menu', 'rn_admin_submenu');
 function rn_admin_submenu() {
     add_submenu_page('edit.php?post_type=rn_submission', __('All Submissions', 'roots-now'), __('All Submissions', 'roots-now'), 'manage_options', 'rn_submissions', 'rn_submissions_page');
     add_submenu_page('edit.php?post_type=rn_submission', __('CSV Export', 'roots-now'), __('CSV Export', 'roots-now'), 'manage_options', 'rn_csv_export', 'rn_csv_export_page');
-    add_submenu_page('edit.php?post_type=rn_submission', __('Campaigns', 'roots-now'), __('Campaigns', 'roots-now'), 'manage_options', 'rn_campaigns', 'rn_campaigns_page');
+    add_submenu_page('edit.php?post_type=rn_submission', __('Campaign Status', 'roots-now'), __('Campaign Status', 'roots-now'), 'manage_options', 'rn_campaigns', 'rn_campaigns_page');
     add_submenu_page('edit.php?post_type=rn_submission', __('New Campaign', 'roots-now'), __('New Campaign', 'roots-now'), 'manage_options', 'rn_new_campaign', 'rn_new_campaign_page');
 }
 
@@ -169,7 +169,8 @@ function rn_campaigns_page() {
         <h1><?php _e('Bulk Email Campaigns', 'roots-now'); ?></h1>
         <p><?php _e('Hourly cron batches. Suggested cron command:', 'roots-now'); ?></p>
         <code style="display:block;padding:12px;background:#f0f0f1;border-radius:4px;margin-bottom:16px">
-            curl -s "https://yourdomain.com/wp-cron.php?doing_wp_cron=1" > /dev/null 2>&1
+            NOTE: For Multisite Use */5 * * * * "wget -q -O- "https://rootsnow.colorgraphicz.in/wp-cron.php?doing_wp_cron=1" >/dev/null 2>&1"
+			Instead Of "curl -s "https://yourdomain.com/wp-cron.php?doing_wp_cron=1" > /dev/null 2>&1"
         </code>
         <table class="wp-list-table widefat fixed striped">
             <thead>
