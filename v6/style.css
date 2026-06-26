@@ -620,6 +620,7 @@ em.serif, .serif { font-family: var(--font-serif); font-style: italic; font-weig
 .hcard-meta span:first-child { color: var(--brand-green); font-weight: 700; }
 .tilt { transform-style: preserve-3d; transition: transform .35s var(--ease); }
 .harvest-cta { text-align: center; margin-top: 36px; }
+.contact-bottom-cta { text-align: center; margin-top: 24px; }
 
 /* Technology section */
 .tech-section { background: var(--bg); }
