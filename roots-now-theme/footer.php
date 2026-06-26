@@ -35,10 +35,10 @@
           wp_nav_menu(['theme_location' => 'footer-1', 'container' => false, 'fallback_cb' => false]);
       } else { ?>
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#harvest">Today's harvest</a></li>
-          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#about')); ?>">About</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#ahow')); ?>">How it works</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#harvest')); ?>">Today's harvest</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#testimonials')); ?>">Reviews</a></li>
           <li><a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Blog</a></li>
         </ul>
       <?php } ?>
@@ -49,10 +49,10 @@
           wp_nav_menu(['theme_location' => 'footer-2', 'container' => false, 'fallback_cb' => false]);
       } else { ?>
         <ul>
-          <li><a href="#pricing">The Nest Basket</a></li>
-          <li><a href="#pricing">The Gastronomy Box</a></li>
-          <li><a href="#pricing">The Atelier Palette</a></li>
-          <li><a href="#contact">Restaurants</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#pricing')); ?>">The Nest Basket</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#pricing')); ?>">The Gastronomy Box</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#pricing')); ?>">The Atelier Palette</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#contact')); ?>">Restaurants</a></li>
         </ul>
       <?php } ?>
     </div>
@@ -62,10 +62,10 @@
           wp_nav_menu(['theme_location' => 'footer-3', 'container' => false, 'fallback_cb' => false]);
       } else { ?>
         <ul>
-          <li><a href="#contact">Careers</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#technology">Sustainability</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#contact')); ?>">Careers</a></li>
+          <li><a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Press</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#technology')); ?>">Sustainability</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#contact')); ?>">Contact</a></li>
         </ul>
       <?php } ?>
     </div>

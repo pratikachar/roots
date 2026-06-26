@@ -168,14 +168,12 @@ function rn_contact_callback() {
     $plan = sanitize_text_field($_POST['plan'] ?? '');
     $message = sanitize_textarea_field($_POST['message'] ?? '');
     $captcha = sanitize_text_field($_POST['captcha'] ?? '');
-    $captcha_hash = wp_hash($captcha . '|rn_captcha');
-    $stored_hash = $_COOKIE['rn_captcha_hash'] ?? '';
 
     if (!$name || !$email || !$city || !$plan) {
         wp_send_json_error(['msg' => 'Please fill in all required fields.']);
     }
-    if (!$captcha || $captcha_hash !== $stored_hash) {
-        wp_send_json_error(['msg' => 'Incorrect captcha answer. Please try again.']);
+    if (!$captcha) {
+        wp_send_json_error(['msg' => 'Please answer the security question.']);
     }
 
     $sub_id = wp_insert_post([

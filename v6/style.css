@@ -723,6 +723,8 @@ em.serif, .serif { font-family: var(--font-serif); font-style: italic; font-weig
 }
 .billing-toggle button.active { background: linear-gradient(135deg, var(--brand-green), var(--brand-lime)); color: #06180c; }
 .billing-toggle .save { font-size: 10px; padding: 2px 6px; background: rgba(0,0,0,.15); border-radius: 999px; }
+.billing-toggle .save.blink { animation: blinkSave .6s ease-in-out 6; }
+@keyframes blinkSave { 0%,100% { opacity: 1; color: inherit; } 50% { opacity: 0; color: #fff; background: var(--brand-green); } }
 
 .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; align-items: stretch; }
 .price-card {

@@ -289,6 +289,7 @@ em.serif,.serif{font-family:var(--font-serif);font-style:italic;font-weight:600}
 .billing-toggle button{padding:10px 18px;border-radius:999px;font-size:13px;font-weight:700;color:var(--text-muted);display:inline-flex;align-items:center;gap:8px;transition:background .3s var(--ease),color .3s var(--ease)}
 .billing-toggle button.active{background:linear-gradient(135deg,var(--brand-green),var(--brand-lime));color:#06180c}
 .billing-toggle .save{font-size:10px;padding:2px 6px;background:rgba(0,0,0,.15);border-radius:999px}
+.billing-toggle .save.blink{animation:blinkSave .6s ease-in-out 6}@keyframes blinkSave{0%,100%{opacity:1;color:inherit}50%{opacity:0;color:#fff;background:var(--brand-green)}}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
 .price-card{position:relative;padding:36px 28px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;gap:22px;transition:transform .5s var(--ease),border-color .3s var(--ease),box-shadow .5s var(--ease)}
 .price-card:hover{transform:translateY(-6px);border-color:var(--border-strong);box-shadow:var(--shadow-lg)}

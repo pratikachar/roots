@@ -442,7 +442,7 @@
       <p class="cta-eyebrow"><?php echo esc_html(rn_home('cta_eyebrow', 'Bypassing the traditional warehouse system.')); ?></p>
       <h2 class="cta-band-h2"><?php echo wp_kses_post(rn_home('cta_title', 'The Micro-Logistics<br>Network.')); ?></h2>
       <p class="cta-band-sub"><?php echo wp_kses_post(rn_home('cta_body', 'Traditional logistics relies on centralized sorting hubs and multi-day shipping schedules, which inherently degrades living plant tissue. Roots Now operates a decentralized network of micro-fulfillment pathways.')); ?></p>
-      <a href="#pricing" class="btn btn-primary btn-xl magnetic">Locate Your Container Farm</a>
+      <a href="#pricing" class="btn btn-primary btn-xl magnetic">Select Your Tire And Locate Your Nearest Farm</a>
       <p class="cta-band-note">100% freshness guarantee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; No lock-in contracts</p>
     </div>
   </div>
@@ -529,7 +529,7 @@
         <li>● Operating in 47 Metro Neighborhoods Across the US</li>
       </ul>
       <div class="contact-bottom-cta">
-        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="btn btn-outline">Read all our articles →</a>
+        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="btn btn-outline">Still not convinced? Please read all our articles →</a>
       </div>
     </div>
   </div>

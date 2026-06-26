@@ -156,6 +156,13 @@ billBtns.forEach(function(b){
     });
     var fb=document.querySelector('.plan-billing-toggle .pbf-btn[data-pb="'+mode+'"]');
     if(fb)fb.click();
+    /* Blink save 12% on monthly */
+    var save=$(".billing-toggle .save");
+    if(save){
+      save.classList.remove("blink");
+      void save.offsetWidth;
+      if(mode==="monthly")save.classList.add("blink");
+    }
   });
 });
 

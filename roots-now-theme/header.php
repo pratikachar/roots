@@ -44,15 +44,15 @@
           wp_nav_menu(['theme_location' => 'primary', 'container' => false, 'menu_class' => '', 'fallback_cb' => false]);
       } else { ?>
         <ul>
-          <li><a href="#hero" data-link>Home</a></li>
-          <li><a href="#about" data-link>About</a></li>
-          <li><a href="#how" data-link>How</a></li>
-          <li><a href="#features" data-link>Features</a></li>
-          <li><a href="#harvest" data-link>Harvest</a></li>
-          <li><a href="#pricing" data-link>Plans</a></li>
-          <li><a href="#testimonials" data-link>Reviews</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#hero')); ?>" data-link>Home</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#about')); ?>" data-link>About</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#how')); ?>" data-link>How</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#features')); ?>" data-link>Features</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#harvest')); ?>" data-link>Harvest</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#pricing')); ?>" data-link>Plans</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#testimonials')); ?>" data-link>Reviews</a></li>
           <li><a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" data-link>Blog</a></li>
-          <li><a href="#contact" data-link>Contact</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#contact')); ?>" data-link>Contact</a></li>
         </ul>
       <?php } ?>
     </nav>
@@ -62,7 +62,7 @@
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="#pricing" class="btn btn-primary magnetic">Subscribe Now</a>
+      <a href="<?php echo esc_url(home_url('/#pricing')); ?>" class="btn btn-primary magnetic">Subscribe Now</a>
       <button class="menu-toggle" id="menuToggle" aria-label="<?php esc_attr_e('Open menu', 'roots-now'); ?>" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -74,18 +74,18 @@
         wp_nav_menu(['theme_location' => 'primary', 'container' => false, 'menu_class' => '', 'fallback_cb' => false]);
     } else { ?>
       <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#how">How It Works</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#harvest">Today's Harvest</a></li>
-        <li><a href="#pricing">Plans</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#hero')); ?>">Home</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#about')); ?>">About</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#how')); ?>">How It Works</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#features')); ?>">Features</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#harvest')); ?>">Today's Harvest</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#pricing')); ?>">Plans</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#testimonials')); ?>">Reviews</a></li>
         <li><a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#contact')); ?>">Contact</a></li>
       </ul>
     <?php } ?>
-    <a href="#pricing" class="btn btn-primary btn-block">Start Subscription</a>
+    <a href="<?php echo esc_url(home_url('/#pricing')); ?>" class="btn btn-primary btn-block">Start Subscription</a>
   </div>
 </header>
 
