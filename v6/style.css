@@ -439,7 +439,7 @@ em.serif, .serif { font-family: var(--font-serif); font-style: italic; font-weig
   border: 1px solid var(--border);
 }
 .art-1 { background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80'); }
-.art-2 { background-image: url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&q=80'); }
+.art-2 { background-image: url('CuttoOrder.jpg'); }
 .art-3 { background-image: url('pexels-kampus-8931666.jpg'); }
 
 /* Marquee bar from v5 */
