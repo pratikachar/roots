@@ -17,7 +17,27 @@ roots/
 │   ├── script.js           All JS features
 │   ├── pexels-kampus-8931666.jpg
 │   ├── pexels-kindelmedia-6868937.jpg
-│   └── pexels-basil-29657646.jpg
+│   ├── pexels-basil-29657647.jpg
+│   └── 1,2,3,4.png         Harvest card images
+├── roots-now-theme/        ★ WordPress Theme v1.0 ★
+│   ├── style.css           Theme header + all CSS
+│   ├── functions.php       Theme setup, CPTs, AJAX, meta boxes, customizer, cron
+│   ├── header.php          HTML head, nav, OG tags, preconnect
+│   ├── footer.php          Widgets, social, modal, back-to-top
+│   ├── front-page.php      Full landing page (all sections)
+│   ├── page.php            Page template
+│   ├── index.php           Blog listing
+│   ├── single.php          Single blog post
+│   ├── archive.php         Archive listing
+│   ├── screenshot.png      Theme thumbnail
+│   ├── inc/
+│   │   └── admin.php       Submissions list, CSV export, campaign manager
+│   ├── template-parts/
+│   │   └── content.php     Blog content card
+│   ├── assets/
+│   │   └── js/
+│   │       └── theme.js    All JS features
+│   └── images/             Logos, harvest cards, step images
 └── progress.md
 ```
 
@@ -79,8 +99,34 @@ roots/
 - Field validation uses `checkValidity()` on blur + submit
 - Live Harvest Network canvas animation from v5 hero adapted for contact section
 
+## WordPress Theme — Features
+- AJAX contact form with client-side validation + server-side captcha (hashed via wp_hash)
+- Modal popup on success/error (no page reload)
+- Auto-reply email to submitter: "Thanks for reaching out..."
+- From email: contact@rootsnow.colorgraphicz.in (via wp_mail_from filter)
+- Admin notification to project.colorgraphicz@gmail.com (hardcoded)
+- Sticky nav, scroll reveal (reveal-item + reveal), back to top with ring progress
+- Blog support: single.php, index.php, archive.php, page.php, comments, pagination
+- Primary nav menu + 4 footer menus (footer-1/2/3 + footer-bottom) with hardcoded fallbacks
+- 5 widget areas (1 blog sidebar + 4 footer columns)
+- Post thumbnails (rn-card 600x375, rn-single 1200x675), custom logo support
+- SEO meta tags + OG tags (title, description, image, type, url) + Twitter cards
+- Preconnect for Google Fonts, Gutenberg blocks support
+- CPT rn_submission (contact form submissions) with admin list table
+- CSV export of all submissions (with BOM for Excel)
+- CPT rn_campaign + hourly cron-based batch email sending (start/pause/resume/delete)
+- wp-cron scheduling: suggested crontab `curl -s "https://domain.com/wp-cron.php?doing_wp_cron=1"`
+- Multisafe: Network Enable compatible
+- front-page.php for landing, page.php for regular pages
+- screenshot.png for theme cover
+- Social media customizer (Instagram, Twitter, TikTok, YouTube, LinkedIn, Facebook)
+- Legal pages auto-created on theme activation (Privacy, Terms, Cookies)
+- Homepage meta box with 25+ editable fields for hero, about, how, features, harvest, tech, pricing, mission, testimonials, CTA
+- Blog page auto-links from nav/footer via `page_for_posts`
+- Author: colorgraphicz
+
 ## Next Steps
-- (none — all sections complete)
+- (none — v6 complete, WP theme complete)
 
 ## WordPress Theme Created
 - Roots Now WordPress theme at roots-now-theme/
