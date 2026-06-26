@@ -239,7 +239,7 @@ em.serif, .serif { font-family: var(--font-serif); font-style: italic; font-weig
   font-family: var(--font-display);
   font-weight: 900; letter-spacing: -0.035em;
   font-size: clamp(44px, 8vw, 112px);
-  line-height: .98;
+  line-height: 1.08;
   margin: 24px 0 28px;
 }
 .hero-title .line { display: block; overflow: hidden; }

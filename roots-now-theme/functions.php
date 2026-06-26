@@ -205,6 +205,23 @@ function rn_contact_callback() {
     wp_send_json_success(['msg' => "You're on the list! We'll be in touch within 24 hours."]);
 }
 
+/* Homepage meta fields — register so Gutenberg saves them */
+add_action('init', 'rn_register_home_meta');
+function rn_register_home_meta() {
+    $keys = ['hero_title_1','hero_title_2','hero_title_3','hero_sub','about_kicker','about_title','about_body',
+        'how_kicker','how_title','features_kicker','features_title','harvest_kicker','harvest_title','harvest_body',
+        'tech_kicker','tech_title','pricing_kicker','pricing_title','pricing_body','mission_title','mission_body',
+        'testimonials_kicker','testimonials_title','cta_eyebrow','cta_title','cta_body'];
+    foreach ($keys as $k) {
+        register_post_meta('page', "rn_home_$k", [
+            'type' => 'string',
+            'single' => true,
+            'show_in_rest' => true,
+            'auth_callback' => '__return_true',
+        ]);
+    }
+}
+
 /* Homepage meta box */
 add_action('add_meta_boxes', 'rn_home_meta_box');
 function rn_home_meta_box() {
@@ -232,6 +249,7 @@ function rn_home_meta_cb($post) {
     echo '<table style="width:100%">';
     foreach ($fields as $key => $label) {
         $val = get_post_meta($post->ID, "rn_home_$key", true);
+        if (!$val) $val = rn_home_default($key);
         $is_area = in_array($key, ['about_body', 'harvest_body', 'pricing_body', 'mission_body', 'cta_body']);
         echo '<tr><td style="padding:6px 12px 6px 0;vertical-align:top;width:200px"><label for="rn_home_' . $key . '"><strong>' . $label . '</strong></label></td>';
         echo '<td style="padding:6px 0">';
@@ -254,9 +272,39 @@ function rn_save_home_meta($post_id) {
         'testimonials_kicker','testimonials_title','cta_eyebrow','cta_title','cta_body'];
     foreach ($keys as $k) {
         if (isset($_POST["rn_home_$k"])) {
-            update_post_meta($post_id, "rn_home_$k", sanitize_post_field('post_content', $_POST["rn_home_$k"], 0, 'db'));
+            $is_area = in_array($k, ['about_body', 'harvest_body', 'pricing_body', 'mission_body', 'cta_body']);
+            update_post_meta($post_id, "rn_home_$k", $is_area ? wp_kses_post($_POST["rn_home_$k"]) : sanitize_text_field($_POST["rn_home_$k"]));
         }
     }
+}
+
+/* Default values for homepage meta */
+function rn_home_default($key) {
+    $d = [
+        'hero_title_1' => 'Harvested', 'hero_title_2' => 'thirty minutes', 'hero_title_3' => 'On your plate right now.',
+        'hero_sub' => 'Roots Now bypasses the thousands of shipping miles built into traditional grocery retail.',
+        'about_kicker' => 'The nutritional decline of long-haul logistics.',
+        'about_title' => 'Your Fresh Salad Has<br>Been on a Truck for Weeks.',
+        'about_body' => 'The produce on standard grocery shelves is rarely fresh.',
+        'how_kicker' => 'From App to Doorbell in Thirty Minutes',
+        'features_kicker' => 'The Culinary Purist Standard',
+        'features_title' => 'Why Culinary Professionals<br>Use Roots Now.',
+        'harvest_kicker' => 'Today on the towers',
+        'harvest_body' => 'From everyday romaine to single-origin Thai holy basil.',
+        'tech_kicker' => 'The Hydroponic Advantage',
+        'tech_title' => 'Controlled Environment Agriculture<br>for Urban Spaces.',
+        'pricing_kicker' => 'Weekly Harvest Tiers',
+        'pricing_title' => 'Choose your harvest rhythm.',
+        'pricing_body' => 'Pause, swap, or skip any week. Cancel anytime.',
+        'mission_title' => 'Ending Urban Food<br>Deserts.',
+        'mission_body' => 'To reintegrate clean, nutrient-dense food production directly into modern metropolitan centers.',
+        'testimonials_kicker' => 'From the people who plate it',
+        'testimonials_title' => 'Loved by chefs. Trusted by parents.',
+        'cta_eyebrow' => 'Bypassing the traditional warehouse system.',
+        'cta_title' => 'The Micro-Logistics<br>Network.',
+        'cta_body' => 'Traditional logistics relies on centralized sorting hubs and multi-day shipping schedules.',
+    ];
+    return $d[$key] ?? '';
 }
 
 /* Legal pages auto-creation */
@@ -358,9 +406,9 @@ function rn_social_url($platform) {
 /* Helper: get homepage meta */
 function rn_home($key, $default = '') {
     $front = (int)get_option('page_on_front');
-    if (!$front) return $default;
+    if (!$front) return $default ?: rn_home_default($key);
     $val = get_post_meta($front, "rn_home_$key", true);
-    return $val ?: $default;
+    return $val ?: ($default ?: rn_home_default($key));
 }
 
 /* Include admin */

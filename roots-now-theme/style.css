@@ -133,7 +133,7 @@ em.serif,.serif{font-family:var(--font-serif);font-style:italic;font-weight:600}
 .pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--brand-green);position:relative}
 .pulse-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--brand-green);animation:pulseRing 1.8s ease-out infinite}
 @keyframes pulseRing{0%{transform:scale(.8);opacity:.8}100%{transform:scale(2);opacity:0}}
-.hero-title{font-family:var(--font-display);font-weight:900;letter-spacing:-0.035em;font-size:clamp(44px,8vw,112px);line-height:.98;margin:24px 0 28px}
+.hero-title{font-family:var(--font-display);font-weight:900;letter-spacing:-0.035em;font-size:clamp(44px,8vw,112px);line-height:1.08;margin:24px 0 28px}
 .hero-title .line{display:block;overflow:hidden}
 .hero-title .line>*{display:inline-block}
 .hero-sub{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:var(--text-soft);max-width:640px;margin:0 0 36px}

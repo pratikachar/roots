@@ -91,31 +91,33 @@ function rn_submissions_page() {
 }
 
 /* CSV Export */
-function rn_csv_export_page() {
-    if (isset($_GET['export']) && wp_verify_nonce($_GET['_wpnonce'], 'rn_csv_export')) {
-        $args = ['post_type' => 'rn_submission', 'posts_per_page' => -1, 'post_status' => 'any'];
-        $query = new WP_Query($args);
-        header('Content-Type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename=roots-now-submissions-' . date('Y-m-d') . '.csv');
-        $out = fopen('php://output', 'w');
-        fwrite($out, "\xEF\xBB\xBF");
-        fputcsv($out, ['ID', 'Name', 'Email', 'City', 'Plan', 'Message', 'Date', 'IP']);
-        while ($query->have_posts()) { $query->the_post();
-            $id = get_the_ID();
-            fputcsv($out, [
-                $id,
-                get_post_meta($id, 'rn_name', true),
-                get_post_meta($id, 'rn_email', true),
-                get_post_meta($id, 'rn_city', true),
-                get_post_meta($id, 'rn_plan', true),
-                get_post_meta($id, 'rn_message', true),
-                get_post_meta($id, 'rn_submitted_at', true) ?: get_the_date('', $id),
-                get_post_meta($id, 'rn_ip', true),
-            ]);
-        }
-        fclose($out);
-        exit;
+add_action('admin_init', 'rn_csv_export_process');
+function rn_csv_export_process() {
+    if (!isset($_GET['page']) || $_GET['page'] !== 'rn_csv_export' || !isset($_GET['export'])) return;
+    if (!wp_verify_nonce($_GET['_wpnonce'], 'rn_csv_export')) return;
+    if (!current_user_can('manage_options')) return;
+    $args = ['post_type' => 'rn_submission', 'posts_per_page' => -1, 'post_status' => 'any'];
+    $query = new WP_Query($args);
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=roots-now-submissions-' . date('Y-m-d') . '.csv');
+    $out = fopen('php://output', 'w');
+    fwrite($out, "\xEF\xBB\xBF");
+    fputcsv($out, ['ID', 'Name', 'Email', 'City', 'Plan', 'Message', 'Date', 'IP']);
+    while ($query->have_posts()) { $query->the_post();
+        $id = get_the_ID();
+        fputcsv($out, [
+            $id, get_post_meta($id, 'rn_name', true), get_post_meta($id, 'rn_email', true),
+            get_post_meta($id, 'rn_city', true), get_post_meta($id, 'rn_plan', true),
+            get_post_meta($id, 'rn_message', true),
+            get_post_meta($id, 'rn_submitted_at', true) ?: get_the_date('', $id),
+            get_post_meta($id, 'rn_ip', true),
+        ]);
     }
+    fclose($out);
+    exit;
+}
+
+function rn_csv_export_page() {
     $count = wp_count_posts('rn_submission')->publish ?? 0;
     ?>
     <div class="wrap">
@@ -244,11 +246,17 @@ function rn_new_campaign_page() {
         ]);
 
         if ($campaign_id) {
+            /* Save selected submission IDs if recipient_type is selected */
+            if ($recipient_type === 'selected' && isset($_POST['selected_subs'])) {
+                $selected = array_map('intval', $_POST['selected_subs']);
+                update_post_meta($campaign_id, '_rn_selected_ids', $selected);
+            }
             echo '<div class="notice notice-success"><p>Campaign created. <a href="' . admin_url('edit.php?post_type=rn_submission&page=rn_campaigns') . '">View campaigns</a></p></div>';
         }
     }
 
     $sub_count = wp_count_posts('rn_submission')->publish ?? 0;
+    $submissions = get_posts(['post_type' => 'rn_submission', 'posts_per_page' => -1, 'post_status' => 'any']);
     ?>
     <div class="wrap">
         <h1><?php _e('New Bulk Email Campaign', 'roots-now'); ?></h1>
@@ -265,10 +273,19 @@ function rn_new_campaign_page() {
                     <td><input type="number" id="batch_size" name="batch_size" value="20" min="1" max="500" /> <span class="description">Emails sent per cron run</span></td></tr>
                 <tr><th><label for="recipient_type">Recipients</label></th>
                     <td>
-                        <select id="recipient_type" name="recipient_type">
+                        <select id="recipient_type" name="recipient_type" onchange="document.getElementById('subs-checkboxes').style.display=this.value==='selected'?'block':'none'">
                             <option value="all">All submissions (<?php echo $sub_count; ?> total)</option>
-                            <option value="selected">Selected (check IDs in submissions table)</option>
+                            <option value="selected">Selected submissions</option>
                         </select>
+                        <div id="subs-checkboxes" style="display:none;margin-top:10px;max-height:300px;overflow-y:auto;border:1px solid #ccc;padding:10px;background:#fff">
+                            <p><label><input type="checkbox" onchange="document.querySelectorAll('#subs-checkboxes input[type=checkbox]').forEach(function(e){e.checked=this.checked})" /> Select all</label></p>
+                            <?php foreach ($submissions as $s) :
+                                $sname = get_post_meta($s->ID, 'rn_name', true);
+                                $semail = get_post_meta($s->ID, 'rn_email', true);
+                            ?>
+                            <p><label><input type="checkbox" name="selected_subs[]" value="<?php echo $s->ID; ?>" /> <?php echo esc_html("$sname — $semail"); ?></label></p>
+                            <?php endforeach; ?>
+                        </div>
                     </td></tr>
                 <tr><th><label for="extra_emails">Extra Emails (one per line)</label></th>
                     <td><textarea id="extra_emails" name="extra_emails" rows="4" class="large-text" placeholder="email1@example.com&#10;email2@example.com"></textarea></td></tr>
