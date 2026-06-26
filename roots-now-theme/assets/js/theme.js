@@ -70,7 +70,9 @@ function updateActiveLink(){
   for(var i=0;i<sections.length;i++){if(sections[i].offsetTop<=top)current=sections[i].id}
   $$(".primary-nav a[href*='#']").forEach(function(a){
     var href=a.getAttribute("href");
-    if(href&&href.startsWith("#"))a.classList.toggle("active",href==="#"+current);
+    if(!href)return;
+    var hash=href.split("#").pop();
+    if(hash)a.classList.toggle("active",hash===current);
   });
 }
 updateActiveLink();

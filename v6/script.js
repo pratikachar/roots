@@ -75,8 +75,11 @@ window.setSelectedPlan = function (plan) {
     for (const s of sections) {
       if (s.offsetTop <= top) current = s.id;
     }
-    $$(".primary-nav a[data-link]").forEach(a => {
-      a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+    $$(".primary-nav a[href*='#']").forEach(a => {
+      const href = a.getAttribute("href");
+      if (!href) return;
+      const hash = href.split("#").pop();
+      if (hash) a.classList.toggle("active", hash === current);
     });
   }
   updateActiveLink();
